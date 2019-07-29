@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -19,74 +18,62 @@ const (
 
 // Write info logs
 func INFO(v ...interface{}) {
-	info := formatLogString("[INFO] :: ", v)
-
 	if outputDir != nil {
-		err := logToFile(infoLog, info)
+		err := logToFile(infoLog, "[INFO] || ", v)
 		if err != nil {
 			log.Println("Could not log to the info log file")
 		}
 	}
 
-	log.Println(info)
+	log.Println("[INFO] || ", v)
 }
 
 // Write debug logs
 func DEBUG(v ...interface{}) {
-	debug := formatLogString("[DEBUG] :: ", v)
-
 	if outputDir != nil {
-		err := logToFile(debugLog, debug)
+		err := logToFile(debugLog, "[DEBUG] || ", v)
 		if err != nil {
 			log.Println("Could not log to the debug log file")
 		}
 	}
 
-	log.Println(debug)
+	log.Println("[DEBUG] || ", v)
 }
 
 //write trace logs
 func TRACE(v ...interface{}) {
-	trace := formatLogString("[TRACE] :: ", v)
-
 	if outputDir != nil {
-		err := logToFile(traceLog, trace)
+		err := logToFile(traceLog, "[TRACE] || ", v)
 		if err != nil {
 			log.Println("Could not log to the trace log file")
 		}
 	}
 
-	log.Println(trace)
+	log.Println("[TRACE] || ", v)
 }
 
 // write error logs
 func ERR(v ...interface{}) {
-	errL := formatLogString("[ERROR] :: ", v)
 	if outputDir != nil {
-		err := logToFile(errorLog, errL)
+		err := logToFile(errorLog, "[ERROR] || ", v)
 		if err != nil {
 			log.Println("Could not log to the error log file")
 		}
 	}
 
-	log.Println(errL)
+	log.Println("[ERROR] || ", v)
 }
 
 // Write fatal logs
 func FATAL(v ...interface{}) {
-	fatal := formatLogString(" [FATAL] || ", v)
 	if outputDir != nil {
-		err := logToFile(fatalLog, fatal)
+		err := logToFile(fatalLog, " [FATAL] || ", v)
 		if err != nil {
 			log.Println("Could not log to the fatal log file")
 		}
 	}
 
-	log.Println(fatal)
-}
-
-func formatLogString(v ...interface{}) string {
-	return fmt.Sprintf("%v", v...)
+	log.Println(" [FATAL] || ", v)
 }
 
 // Set the log output directory
@@ -102,7 +89,7 @@ func SetLogsDirectory(dir string) {
 }
 
 // Set the correct log file for writing
-func logToFile(file string, v interface{}) error {
+func logToFile(file string, v ...interface{}) error {
 
 	if *outputDir == "" {
 		return nil
@@ -117,6 +104,6 @@ func logToFile(file string, v interface{}) error {
 	defer f.Close()
 
 	log.SetOutput(f)
-	log.Println(v)
+	log.Println(v...)
 	return nil
 }
