@@ -20,11 +20,11 @@ func TestMain(m *testing.M) {
 }
 
 func deleteLogFiles() {
-	_ = os.Remove(fileDir + infoLog)
-	_ = os.Remove(fileDir + debugLog)
-	_ = os.Remove(fileDir + traceLog)
-	_ = os.Remove(fileDir + errorLog)
-	_ = os.Remove(fileDir + fatalLog)
+	_ = os.Remove(fileDir + infoLogFile)
+	_ = os.Remove(fileDir + debugLogFile)
+	_ = os.Remove(fileDir + traceLogFile)
+	_ = os.Remove(fileDir + errorLogFile)
+	_ = os.Remove(fileDir + fatalLogFile)
 }
 
 // Test that the logs output directory is being created properly
@@ -51,7 +51,7 @@ func TestINFO(t *testing.T) {
 	INFO(logData)
 
 	// Check the directory for the file
-	f, err := os.Stat(fileDir + infoLog)
+	f, err := os.Stat(fileDir + infoLogFile)
 
 	if err != nil {
 		t.Error("Error Finding Info log: ", err)
@@ -71,7 +71,7 @@ func TestDEBUG(t *testing.T) {
 	DEBUG(logData)
 
 	// Check the directory for the file
-	f, err := os.Stat(fileDir + debugLog)
+	f, err := os.Stat(fileDir + debugLogFile)
 
 	if err != nil {
 		t.Error("Error Finding Info log: ", err)
@@ -91,7 +91,7 @@ func TestTRACE(t *testing.T) {
 	TRACE(logData)
 
 	// Check the directory for the file
-	f, err := os.Stat(fileDir + traceLog)
+	f, err := os.Stat(fileDir + traceLogFile)
 
 	if err != nil {
 		t.Error("Error Finding Trace log: ", err)
@@ -111,7 +111,7 @@ func TestERR(t *testing.T) {
 	ERR(logData)
 
 	// Check the directory for the file
-	f, err := os.Stat(fileDir + errorLog)
+	f, err := os.Stat(fileDir + errorLogFile)
 
 	if err != nil {
 		t.Error("Error Finding Error log: ", err)
@@ -131,7 +131,7 @@ func TestFATAL(t *testing.T) {
 	FATAL(logData)
 
 	// Check the directory for the file
-	f, err := os.Stat(fileDir + fatalLog)
+	f, err := os.Stat(fileDir + fatalLogFile)
 
 	if err != nil {
 		t.Error("Error Finding Fatal log: ", err)

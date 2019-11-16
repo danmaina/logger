@@ -6,74 +6,93 @@ import (
 )
 
 var outputDir *string
+var logLevel *int
 
 // Create Log File Names
 const (
-	infoLog  = "INFO.log"
-	debugLog = "DEBUG.log"
-	traceLog = "TRACE.log"
-	errorLog = "ERROR.log"
-	fatalLog = "FATAL.log"
+	infoLogFile  = "INFO.log"
+	debugLogFile = "DEBUG.log"
+	traceLogFile = "TRACE.log"
+	errorLogFile = "ERROR.log"
+	fatalLogFile = "FATAL.log"
+
+	infoLogPrefix  = "[INFO] || "
+	errorLogPrefix = "[ERROR] || "
+	debugLogPrefix = "[DEBUG] || "
+	traceLogPrefix = "[TRACE] || "
+	fatalLogPrefix = "[FATAL] || "
 )
 
 // Write info logs
 func INFO(v ...interface{}) {
-	if outputDir != nil {
-		err := logToFile(infoLog, "[INFO] || ", v)
-		if err != nil {
-			log.Println("Could not log to the info log file")
+
+	if logLevel == nil || *logLevel > 1 {
+		if outputDir != nil {
+			err := logToFile(infoLogFile, infoLogPrefix, v)
+			if err != nil {
+				log.Println("Could not log to the info log file")
+			}
 		}
+
+		log.Println(infoLogPrefix, v)
 	}
 
-	log.Println("[INFO] || ", v)
 }
 
 // Write debug logs
 func DEBUG(v ...interface{}) {
-	if outputDir != nil {
-		err := logToFile(debugLog, "[DEBUG] || ", v)
-		if err != nil {
-			log.Println("Could not log to the debug log file")
+	if logLevel == nil || *logLevel > 2 {
+		if outputDir != nil {
+			err := logToFile(debugLogFile, debugLogPrefix, v)
+			if err != nil {
+				log.Println("Could not log to the debug log file")
+			}
 		}
-	}
 
-	log.Println("[DEBUG] || ", v)
+		log.Println(debugLogPrefix, v)
+	}
 }
 
 //write trace logs
 func TRACE(v ...interface{}) {
-	if outputDir != nil {
-		err := logToFile(traceLog, "[TRACE] || ", v)
-		if err != nil {
-			log.Println("Could not log to the trace log file")
+	if logLevel == nil || *logLevel > 3 {
+		if outputDir != nil {
+			err := logToFile(traceLogFile, traceLogPrefix, v)
+			if err != nil {
+				log.Println("Could not log to the trace log file")
+			}
 		}
-	}
 
-	log.Println("[TRACE] || ", v)
+		log.Println(traceLogPrefix, v)
+	}
 }
 
 // write error logs
 func ERR(v ...interface{}) {
-	if outputDir != nil {
-		err := logToFile(errorLog, "[ERROR] || ", v)
-		if err != nil {
-			log.Println("Could not log to the error log file")
+	if logLevel == nil || *logLevel > 0 {
+		if outputDir != nil {
+			err := logToFile(errorLogFile, errorLogPrefix, v)
+			if err != nil {
+				log.Println("Could not log to the error log file")
+			}
 		}
-	}
 
-	log.Println("[ERROR] || ", v)
+		log.Println(errorLogPrefix, v)
+	}
 }
 
 // Write fatal logs
 func FATAL(v ...interface{}) {
-	if outputDir != nil {
-		err := logToFile(fatalLog, " [FATAL] || ", v)
-		if err != nil {
-			log.Println("Could not log to the fatal log file")
+	if logLevel == nil || *logLevel == 0 {
+		if outputDir != nil {
+			err := logToFile(fatalLogFile, fatalLogPrefix, v)
+			if err != nil {
+				log.Println("Could not log to the fatal log file")
+			}
 		}
-	}
 
-	log.Println(" [FATAL] || ", v)
+		log.Println(fatalLogPrefix, v)
+	}
 }
 
 // Set the log output directory
@@ -86,6 +105,22 @@ func SetLogsDirectory(dir string) {
 	}
 
 	outputDir = &dir
+}
+
+// Set log level
+func SetLogLevel(level int) {
+
+	// Log level 0 is FATAL
+	// Log level 1 is ERROR
+	// Log level 2 is INFO
+	// Log level 3 is DEBUG
+	// log level 4 is TRACE
+
+	if level > 5 {
+		*logLevel = 1
+	}
+
+	logLevel = &level
 }
 
 // Set the correct log file for writing
