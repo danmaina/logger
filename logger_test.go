@@ -42,7 +42,7 @@ func TestSetLogsDirectory(t *testing.T) {
 	}
 }
 
-func TestINFO(t *testing.T) {
+func TestINFOWithLogDir(t *testing.T) {
 
 	// Create File Output Directory
 	SetLogsDirectory(fileDir)
@@ -63,7 +63,7 @@ func TestINFO(t *testing.T) {
 	}
 }
 
-func TestDEBUG(t *testing.T) {
+func TestDEBUGWithLogDir(t *testing.T) {
 	// Create File Output Directory
 	SetLogsDirectory(fileDir)
 
@@ -83,7 +83,7 @@ func TestDEBUG(t *testing.T) {
 	}
 }
 
-func TestTRACE(t *testing.T) {
+func TestTRACEWithLogDir(t *testing.T) {
 	// Create File Output Directory
 	SetLogsDirectory(fileDir)
 
@@ -103,7 +103,7 @@ func TestTRACE(t *testing.T) {
 	}
 }
 
-func TestERR(t *testing.T) {
+func TestERRWithLogDir(t *testing.T) {
 	// Create File Output Directory
 	SetLogsDirectory(fileDir)
 
@@ -123,7 +123,7 @@ func TestERR(t *testing.T) {
 	}
 }
 
-func TestFATAL(t *testing.T) {
+func TestFATALWithLogDir(t *testing.T) {
 	// Create File Output Directory
 	SetLogsDirectory(fileDir)
 
