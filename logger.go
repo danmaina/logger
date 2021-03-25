@@ -56,6 +56,7 @@ func DEBUG(v ...interface{}) {
 		}
 
 		fmt.Printf(debugColor, debugLogPrefix, v)
+		fmt.Println("")
 	}
 }
 
@@ -70,6 +71,7 @@ func TRACE(v ...interface{}) {
 		}
 
 		fmt.Printf(noticeColor, traceLogPrefix, v)
+		fmt.Println("")
 	}
 }
 
@@ -84,6 +86,7 @@ func ERR(v ...interface{}) {
 		}
 
 		fmt.Printf(errorColor, errorLogPrefix, v)
+		fmt.Println("")
 	}
 }
 
@@ -98,6 +101,7 @@ func FATAL(v ...interface{}) {
 		}
 
 		fmt.Printf(errorColor, fatalLogPrefix, v)
+		fmt.Println("")
 	}
 }
 
