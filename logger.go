@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -22,11 +23,10 @@ const (
 	traceLogPrefix = "[TRACE] || "
 	fatalLogPrefix = "[FATAL] || "
 
-	infoColor    = "\033[1;34m%s\033[0m"
-	noticeColor  = "\033[1;36m%s\033[0m"
-	warningColor = "\033[1;33m%s\033[0m"
-	errorColor   = "\033[1;31m%s\033[0m"
-	debugColor   = "\033[0;36m%s\033[0m"
+	infoColor   = "\033[1;34m%s\033[0m"
+	noticeColor = "\033[1;36m%s\033[0m"
+	errorColor  = "\033[1;31m%s\033[0m"
+	debugColor  = "\033[0;36m%s\033[0m"
 )
 
 // Write info logs
@@ -40,7 +40,7 @@ func INFO(v ...interface{}) {
 			}
 		}
 
-		log.Println(infoColor, infoLogPrefix, v)
+		fmt.Printf(infoColor, infoLogPrefix, v)
 	}
 
 }
@@ -55,7 +55,7 @@ func DEBUG(v ...interface{}) {
 			}
 		}
 
-		log.Println(debugColor, debugLogPrefix, v)
+		fmt.Printf(debugColor, debugLogPrefix, v)
 	}
 }
 
@@ -69,7 +69,7 @@ func TRACE(v ...interface{}) {
 			}
 		}
 
-		log.Println(noticeColor, traceLogPrefix, v)
+		fmt.Printf(noticeColor, traceLogPrefix, v)
 	}
 }
 
@@ -83,7 +83,7 @@ func ERR(v ...interface{}) {
 			}
 		}
 
-		log.Println(errorColor, errorLogPrefix, v)
+		fmt.Printf(errorColor, errorLogPrefix, v)
 	}
 }
 
@@ -97,7 +97,7 @@ func FATAL(v ...interface{}) {
 			}
 		}
 
-		log.Println(errorColor, fatalLogPrefix, v)
+		fmt.Printf(errorColor, fatalLogPrefix, v)
 	}
 }
 
