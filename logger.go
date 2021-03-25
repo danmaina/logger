@@ -39,8 +39,7 @@ func INFO(v ...interface{}) {
 			}
 		}
 
-		log.Printf(infoColor, infoLogPrefix, v)
-		log.Println("")
+		log.Printf(infoColor, infoLogPrefix, v, "\n")
 	}
 
 }
@@ -55,8 +54,7 @@ func DEBUG(v ...interface{}) {
 			}
 		}
 
-		log.Printf(debugColor, debugLogPrefix, v)
-		log.Println("")
+		log.Printf(debugColor, debugLogPrefix, v, "\n")
 	}
 }
 
@@ -70,8 +68,7 @@ func TRACE(v ...interface{}) {
 			}
 		}
 
-		log.Printf(noticeColor, traceLogPrefix, v)
-		log.Println("")
+		log.Printf(noticeColor, traceLogPrefix, v, "\n")
 	}
 }
 
@@ -85,8 +82,7 @@ func ERR(v ...interface{}) {
 			}
 		}
 
-		log.Printf(errorColor, errorLogPrefix, v)
-		log.Println("")
+		log.Printf(errorColor, errorLogPrefix, v, "\n")
 	}
 }
 
@@ -100,8 +96,7 @@ func FATAL(v ...interface{}) {
 			}
 		}
 
-		log.Printf(errorColor, fatalLogPrefix, v)
-		log.Println("")
+		log.Printf(errorColor, fatalLogPrefix, v, "\n")
 	}
 }
 
