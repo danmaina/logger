@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -40,7 +39,8 @@ func INFO(v ...interface{}) {
 			}
 		}
 
-		fmt.Printf(infoColor, infoLogPrefix, v)
+		log.Printf(infoColor, infoLogPrefix, v)
+		log.Println("")
 	}
 
 }
@@ -55,8 +55,8 @@ func DEBUG(v ...interface{}) {
 			}
 		}
 
-		fmt.Printf(debugColor, debugLogPrefix, v)
-		fmt.Println("")
+		log.Printf(debugColor, debugLogPrefix, v)
+		log.Println("")
 	}
 }
 
@@ -70,8 +70,8 @@ func TRACE(v ...interface{}) {
 			}
 		}
 
-		fmt.Printf(noticeColor, traceLogPrefix, v)
-		fmt.Println("")
+		log.Printf(noticeColor, traceLogPrefix, v)
+		log.Println("")
 	}
 }
 
@@ -85,8 +85,8 @@ func ERR(v ...interface{}) {
 			}
 		}
 
-		fmt.Printf(errorColor, errorLogPrefix, v)
-		fmt.Println("")
+		log.Printf(errorColor, errorLogPrefix, v)
+		log.Println("")
 	}
 }
 
@@ -100,8 +100,8 @@ func FATAL(v ...interface{}) {
 			}
 		}
 
-		fmt.Printf(errorColor, fatalLogPrefix, v)
-		fmt.Println("")
+		log.Printf(errorColor, fatalLogPrefix, v)
+		log.Println("")
 	}
 }
 
