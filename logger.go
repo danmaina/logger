@@ -39,7 +39,8 @@ func INFO(v ...interface{}) {
 			}
 		}
 
-		log.Printf(infoColor, infoLogPrefix, v, "\n")
+		log.SetPrefix(infoLogPrefix)
+		log.Printf(infoColor, v)
 	}
 
 }
@@ -54,7 +55,8 @@ func DEBUG(v ...interface{}) {
 			}
 		}
 
-		log.Printf(debugColor, debugLogPrefix, v, "\n")
+		log.SetPrefix(debugLogPrefix)
+		log.Printf(debugColor, v)
 	}
 }
 
@@ -68,7 +70,8 @@ func TRACE(v ...interface{}) {
 			}
 		}
 
-		log.Printf(noticeColor, traceLogPrefix, v, "\n")
+		log.SetPrefix(traceLogPrefix)
+		log.Printf(noticeColor, v)
 	}
 }
 
@@ -82,7 +85,8 @@ func ERR(v ...interface{}) {
 			}
 		}
 
-		log.Printf(errorColor, errorLogPrefix, v, "\n")
+		log.SetPrefix(errorLogPrefix)
+		log.Printf(errorColor, v)
 	}
 }
 
@@ -90,13 +94,14 @@ func ERR(v ...interface{}) {
 func FATAL(v ...interface{}) {
 	if logLevel == nil || *logLevel == 0 {
 		if outputDir != nil {
-			err := logToFile(fatalLogFile, fatalLogPrefix, v)
+			err := logToFile(fatalLogFile, v)
 			if err != nil {
 				log.Println("Could not log to the fatal log file")
 			}
 		}
 
-		log.Printf(errorColor, fatalLogPrefix, v, "\n")
+		log.SetPrefix(fatalLogPrefix)
+		log.Printf(errorColor, v)
 	}
 }
 
