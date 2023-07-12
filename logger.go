@@ -22,10 +22,10 @@ const (
 	traceLogPrefix = "[TRACE] || "
 	fatalLogPrefix = "[FATAL] || "
 
-	infoColor   = "\033[1;34m%s\033[0m"
-	noticeColor = "\033[1;36m%s\033[0m"
-	errorColor  = "\033[1;31m%s\033[0m"
-	debugColor  = "\033[0;36m%s\033[0m"
+	infoColor   = "\033[1;34m%v\033[0m"
+	noticeColor = "\033[1;36m%v\033[0m"
+	errorColor  = "\033[1;31m%v\033[0m"
+	debugColor  = "\033[0;36m%v\033[0m"
 )
 
 // Write info logs
@@ -60,7 +60,7 @@ func DEBUG(v ...interface{}) {
 	}
 }
 
-//write trace logs
+// write trace logs
 func TRACE(v ...interface{}) {
 	if logLevel == nil || *logLevel > 3 {
 		if outputDir != nil {
@@ -94,7 +94,7 @@ func ERR(v ...interface{}) {
 func FATAL(v ...interface{}) {
 	if logLevel == nil || *logLevel == 0 {
 		if outputDir != nil {
-			err := logToFile(fatalLogFile, v)
+			err := logToFile(fatalLogFile, fatalLogPrefix, v)
 			if err != nil {
 				log.Println("Could not log to the fatal log file")
 			}

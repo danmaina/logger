@@ -12,6 +12,8 @@ const (
 
 func TestMain(m *testing.M) {
 
+	SetLogLevel(5)
+
 	code := m.Run()
 
 	deleteLogFiles()
@@ -74,7 +76,7 @@ func TestDEBUG(t *testing.T) {
 	f, err := os.Stat(fileDir + debugLogFile)
 
 	if err != nil {
-		t.Error("Error Finding Info log: ", err)
+		t.Error("Error Finding Debug log: ", err)
 	}
 
 	// Check that the file has content
@@ -125,7 +127,7 @@ func TestERR(t *testing.T) {
 
 func TestFATAL(t *testing.T) {
 	// Create File Output Directory
-	SetLogsDirectory(fileDir)
+	SetLogsDirectory(fileDir + fatalLogFile)
 
 	// write a log using FATAL
 	FATAL(logData)
