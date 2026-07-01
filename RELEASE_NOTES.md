@@ -1,4 +1,4 @@
-# Release Notes - v1.1.0
+# Release Notes - v2.0.0
 
 This release introduces significant enhancements to the `logger` package, including concurrency safety, simplified log levels, custom date formatting, full console line color coding, support for Grafana Loki shipping, Prometheus metrics integration, and full package documentation.
 

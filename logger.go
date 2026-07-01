@@ -56,11 +56,11 @@ const (
 	errorLogFile = "ERROR.log"
 	fatalLogFile = "FATAL.log"
 
-	infoLogPrefix  = "[INFO] || "
-	warnLogPrefix  = "[WARN] || "
-	errorLogPrefix = "[ERROR] || "
-	debugLogPrefix = "[DEBUG] || "
-	fatalLogPrefix = "[FATAL] || "
+	infoLogPrefix  = "[INFO]   || "
+	warnLogPrefix  = "[WARN]   || "
+	errorLogPrefix = "[ERROR]  || "
+	debugLogPrefix = "[DEBUG]  || "
+	fatalLogPrefix = "[FATAL]  || "
 
 	infoColor  = "\033[1;34m%v\033[0m"
 	warnColor  = "\033[1;33m%v\033[0m"
@@ -507,25 +507,25 @@ func (l *Logger) logMsgf(lvl Level, label string, filename string, prefix string
 
 // Package level functions delegating to defaultLogger
 
-func INFO(v ...interface{})                  { defaultLogger.INFO(v...) }
-func Info(v ...interface{})                  { defaultLogger.Info(v...) }
-func Infof(format string, v ...interface{})   { defaultLogger.Infof(format, v...) }
+func INFO(v ...interface{})                 { defaultLogger.INFO(v...) }
+func Info(v ...interface{})                 { defaultLogger.Info(v...) }
+func Infof(format string, v ...interface{}) { defaultLogger.Infof(format, v...) }
 
-func WARN(v ...interface{})                  { defaultLogger.WARN(v...) }
-func Warn(v ...interface{})                  { defaultLogger.Warn(v...) }
-func Warnf(format string, v ...interface{})   { defaultLogger.Warnf(format, v...) }
+func WARN(v ...interface{})                 { defaultLogger.WARN(v...) }
+func Warn(v ...interface{})                 { defaultLogger.Warn(v...) }
+func Warnf(format string, v ...interface{}) { defaultLogger.Warnf(format, v...) }
 
 func DEBUG(v ...interface{})                 { defaultLogger.DEBUG(v...) }
 func Debug(v ...interface{})                 { defaultLogger.Debug(v...) }
-func Debugf(format string, v ...interface{})  { defaultLogger.Debugf(format, v...) }
+func Debugf(format string, v ...interface{}) { defaultLogger.Debugf(format, v...) }
 
-func ERR(v ...interface{})                   { defaultLogger.ERR(v...) }
-func Err(v ...interface{})                   { defaultLogger.Err(v...) }
-func Errf(format string, v ...interface{})    { defaultLogger.Errf(format, v...) }
+func ERR(v ...interface{})                 { defaultLogger.ERR(v...) }
+func Err(v ...interface{})                 { defaultLogger.Err(v...) }
+func Errf(format string, v ...interface{}) { defaultLogger.Errf(format, v...) }
 
 func FATAL(v ...interface{})                 { defaultLogger.FATAL(v...) }
 func Fatal(v ...interface{})                 { defaultLogger.Fatal(v...) }
-func Fatalf(format string, v ...interface{})  { defaultLogger.Fatalf(format, v...) }
+func Fatalf(format string, v ...interface{}) { defaultLogger.Fatalf(format, v...) }
 
 // Logger methods
 
