@@ -5,13 +5,13 @@
 ## Installation
 
 ```bash
-go get github.com/danmaina/logger
+go get github.com/danmaina/logger/v2
 ```
 
 ## Import
 
 ```go
-import "github.com/danmaina/logger"
+import "github.com/danmaina/logger/v2"
 ```
 
 ## Configuration Guide
@@ -29,7 +29,7 @@ package main
 
 import (
     "time"
-    "github.com/danmaina/logger"
+    "github.com/danmaina/logger/v2"
     "github.com/prometheus/client_golang/prometheus"
 )
 
@@ -73,7 +73,7 @@ For applications requiring different log destinations or levels for different co
 package main
 
 import (
-    "github.com/danmaina/logger"
+    "github.com/danmaina/logger/v2"
 )
 
 func main() {

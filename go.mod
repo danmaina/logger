@@ -1,4 +1,4 @@
-module github.com/danmaina/logger
+module github.com/danmaina/logger/v2
 
 go 1.23.0
 
